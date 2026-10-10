@@ -3,11 +3,15 @@ zerops:
     build:
       base: nodejs@22
       buildCommands:
-        - npm install -g 9router || npm install --prefix $HOME/.local -g 9router || true
+        - git clone --depth 1 https://github.com/decolua/9router.git src9
+        - cp -r src9/* ./
+        - npm ci || npm install
+        - npm run build
       deployFiles: ./
+      cache: node_modules
     run:
       base: nodejs@22
       ports:
         - port: 20127
           httpSupport: true
-      start: bash ./start.sh
+      start: bash ./start-main.sh
