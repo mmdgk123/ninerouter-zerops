@@ -8,6 +8,6 @@ zerops:
     run:
       base: nodejs@22
       ports:
-        - port: 20128
+        - port: 20127
           httpSupport: true
       start: bash ./start.sh
